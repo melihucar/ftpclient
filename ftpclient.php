@@ -38,12 +38,6 @@ class FTPClient
      * Constructor
      * 
      * Checks if ftp extension is loaded.
-     * 
-     * @param string $host
-     * @param int $port
-     * @param int $timeout
-     * 
-     * @return void
      */
     public function FTPClient()
     {
