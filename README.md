@@ -66,6 +66,77 @@ $ftp->removeDirectory($directoryName);
 ###Getting Directory List :###
 
 ```php
-// return directory list as array
+// returns directory list as array
 $ftp->listDirectory();
+```
+
+###Deleting File :###
+
+```php
+$ftp->delete($filename);
+```
+
+###Returns file size (bytes) :###
+
+```php
+$ftp->size($filename);
+```
+
+###Returns last modified time :###
+
+```php
+// returns unix timestamp
+$ftp->modifiedTime($filename);
+
+// returns formated
+$ftp->modifiedTime($filename, $format);
+```
+
+###Renaming files or folders :###
+
+```php
+$ftp->rename($current, $new);
+```
+
+###Downloading a file :###
+```php
+// Downloads a file from remote host
+$ftp->get($localFile, $remoteFile);
+
+// Downloads file to an open file
+$ftp->fget($handle, $remoteFile);
+```
+
+###Uploading a file :###
+```php
+// Uploading local file to remote host
+$ftp->put($remoteFile, $localFile);
+
+// Uploading from an open file
+$ftp->fput($remoteFile, $handle);
+```
+
+###Getting server options :###
+```php
+$ftp->getOption(FTPClient::TIMEOUT_SEC);
+```
+
+###Setting server options :###
+```php
+$ftp->setOption(FTPClient::TIMEOUT_SEC, 30);
+```
+
+###Allocating space for uploading file :###
+```php
+$ftp->allocate($filesize);
+```
+
+###Changing file and directory permissions :###
+```php
+$ftp->chmod($mode, $filename);
+```
+
+###Running custom command on remote server :###
+```php
+$ftp->exec($command);
 ```
