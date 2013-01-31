@@ -140,3 +140,18 @@ $ftp->chmod($mode, $filename);
 ```php
 $ftp->exec($command);
 ```
+
+###Error Handling :###
+Class throws exception if opetarion fails. So simply use try-catch blocks.
+```php
+try {
+    $ftp = new FTPClient();
+    $ftp->connect($host, $ssl, $port, $timeout);
+    $ftp->loginlogin($username, $password);
+} catch (Exception $e) {
+    // we got the error!
+}
+```
+
+# Contributing
+Did you find a bug or do you know a better way to do it? Simply just fork and fix it. Then send a pull request.
