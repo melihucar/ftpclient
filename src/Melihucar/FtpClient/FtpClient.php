@@ -1,4 +1,4 @@
-<?php
+<?php namespace Melihucar\FtpClient;
 /**
  * FTP Client for PHP
  * 
@@ -18,7 +18,7 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
-class FTPClient
+class FtpClient
 {
 
     // Const variables
@@ -39,7 +39,7 @@ class FTPClient
      * 
      * Checks if ftp extension is loaded.
      */
-    public function FTPClient()
+    public function __construct()
     {
         if ( !extension_loaded('ftp') ) {
             throw new Exception('FTP extension is not loaded!');            
