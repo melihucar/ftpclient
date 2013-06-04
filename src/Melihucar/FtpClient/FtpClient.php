@@ -1,4 +1,7 @@
 <?php namespace Melihucar\FtpClient;
+
+use \Exception;
+
 /**
  * FTP Client for PHP
  * 
