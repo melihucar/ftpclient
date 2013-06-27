@@ -314,9 +314,9 @@ class FtpClient
     public function get($localFile, $remoteFile, $mode = FTPClient::ASCII, $resumePosision = 0)
     {
         $result = @ftp_get($this->connection, $localFile, $remoteFile, $mode, $resumePosision);
-        
         if ($result === false) {
-            throw new Exception('Unable to get file');
+            throw new Exception(sprintf('Unable to get or save file "%s" from %s',
+                $localFile, $remoteFile));
         }
 
         return $this;
