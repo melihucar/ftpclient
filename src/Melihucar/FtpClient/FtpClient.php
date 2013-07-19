@@ -38,6 +38,21 @@ class FtpClient
     private $connection = null;
 
     /**
+     * passive mode active / to be activated
+     *
+     * @var bool
+     */
+    protected $passive = false;
+
+    /**
+     * verbose mode
+     *
+     * @todo allow verbose mode to call ftp functions without "@"
+     * @var bool
+     */
+    protected $verbose = false;
+
+    /**
      * Constructor
      * 
      * Checks if ftp extension is loaded.
@@ -116,10 +131,13 @@ class FtpClient
      */
     public function passive($passive = true)
     {
-        $result = @ftp_pasv($this->connection, $passive);
-        
-        if ($result === false) {
-            throw new Exception('Unable to change passive mode');
+        $this->passive = $passive;
+
+        if ($this->connection) {
+            $result = ftp_pasv($this->connection, $passive);
+            if ($result === false) {
+                throw new Exception('Unable to change passive mode');
+            }
         }
 
         return $this;
