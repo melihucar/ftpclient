@@ -12,7 +12,7 @@ FTP Client for PHP
 ```php
 $ftp = new FTPClient();
 $ftp->connect($host, $ssl, $port, $timeout);
-$ftp->loginlogin($username, $password);
+$ftp->login($username, $password);
 ```
 
 ### Using Passive Mode :###
