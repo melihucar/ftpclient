@@ -1,5 +1,8 @@
 FTP Client for PHP
 =========================
+[![Build Status](https://api.travis-ci.org/melihucar/ftpclient.png?branch=master)](https://travis-ci.org/melihucar/ftpclient)
+[![Total Downloads](https://poser.pugx.org/melihucar/ftpclient/downloads.png)](https://packagist.org/packages/melihucar/ftpclient)
+[![Latest Stable Version](https://poser.pugx.org/melihucar/ftpclient/v/stable.png)](https://packagist.org/packages/melihucar/ftpclient)
 
 *By Melih Ucar.
 (http://www.melihucar.net/)*
