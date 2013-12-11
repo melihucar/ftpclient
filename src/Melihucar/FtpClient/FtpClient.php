@@ -457,7 +457,7 @@ class FtpClient
                 break;
         }
 
-        return @ftp_set_option($this->connection, $option, $val);
+        return @ftp_set_option($this->connection, $option, $value);
     }
 
     /**
@@ -469,7 +469,7 @@ class FtpClient
      */
     public function allocate($filesize)
     {
-        $result = @ftp_alloc($this->connection, $size);
+        $result = @ftp_alloc($this->connection, $filesize);
         
         if ($result === false) {
             throw new Exception('Unable to allocate');
