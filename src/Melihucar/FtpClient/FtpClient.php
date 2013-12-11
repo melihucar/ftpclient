@@ -229,6 +229,25 @@ class FtpClient
     }
 
     /**
+     * @param string $parameters
+     * @param bool $recursive
+     *
+     * @return array
+     *
+     * @throws \Exception
+     */
+    public function rawlistDirectory($parameters, $recursive = false)
+    {
+        $result = @ftp_rawlist($this->connection, $parameters, $recursive);
+
+        if ($result === false) {
+            throw new Exception('Unable to list directory');
+        }
+
+        return $result;
+    }
+
+    /**
      * Deletes a file on the FTP server
      *
      * @param string $path
@@ -438,7 +457,7 @@ class FtpClient
                 break;
         }
 
-        return @ftp_set_option($this->connection, $option, $val);
+        return @ftp_set_option($this->connection, $option, $value);
     }
 
     /**
@@ -450,7 +469,7 @@ class FtpClient
      */
     public function allocate($filesize)
     {
-        $result = @ftp_alloc($this->connection, $size);
+        $result = @ftp_alloc($this->connection, $filesize);
         
         if ($result === false) {
             throw new Exception('Unable to allocate');

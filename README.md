@@ -73,6 +73,13 @@ $ftp->removeDirectory($directoryName);
 $ftp->listDirectory();
 ```
 
+###Getting Directory List :###
+
+```php
+// executes the FTP LIST command, and returns the result as an array
+$ftp->rawlistDirectory($parameters, $recursive);
+```
+
 ###Deleting File :###
 
 ```php
