@@ -53,6 +53,12 @@ class FtpClient
     protected $verbose = false;
 
     /**
+     *
+     * @var bool
+     */
+    protected $binary = false;
+
+    /**
      * Constructor
      * 
      * Checks if ftp extension is loaded.
@@ -146,6 +152,21 @@ class FtpClient
         }
 
         return $this;
+    }
+
+    public function binary($binary)
+    {
+        $this->binary = $binary;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMode()
+    {
+        return $this->binary ? FTPClient::BINARY : FTPClient::ASCII;
     }
 
     /**
@@ -354,12 +375,14 @@ class FtpClient
      * 
      * @return FTPClient
      */
-    public function get($localFile, $remoteFile, $mode = FTPClient::ASCII, $resumePosision = 0)
+    public function get($localFile, $remoteFile, $resumePosision = 0)
     {
+        $mode = $this->getMode();
         $result = @ftp_get($this->connection, $localFile, $remoteFile, $mode, $resumePosision);
-        if ($result === false) {
-            throw new Exception(sprintf('Unable to get or save file "%s" from %s',
-                $localFile, $remoteFile));
+
+        if ($result === false)
+        {
+            throw new Exception(sprintf('Unable to get or save file "%s" from %s', $localFile, $remoteFile));
         }
 
         return $this;
@@ -375,8 +398,9 @@ class FtpClient
      * 
      * @return FTPClient
      */
-    public function put($remoteFile, $localFile, $mode = FTPClient::ASCII, $startPosision = 0)
+    public function put($remoteFile, $localFile, $startPosision = 0)
     {
+        $mode = $this->getMode();
         $result = @ftp_put($this->connection, $remoteFile, $localFile, $mode, $startPosision);
         
         if ($result === false) {
@@ -396,8 +420,9 @@ class FtpClient
      * 
      * @return FTPClient
      */
-    public function fget(resource $handle, $remoteFile, $mode = FTPClient::ASCII, $resumePosision = 0)
+    public function fget(resource $handle, $remoteFile, $resumePosision = 0)
     {
+        $mode = $this->getMode();
         $result = @ftp_fget($this->connection, $handle, $remoteFile, $mode, $resumePosision);
         
         if ($result === false) {
@@ -417,8 +442,9 @@ class FtpClient
      * 
      * @return FTPClient
      */
-    public function fput($remoteFile, resource $handle, $mode = FTPClient::ASCII, $startPosision = 0)
+    public function fput($remoteFile, resource $handle, $startPosision = 0)
     {
+        $mode = $this->getMode();
         $result = @ftp_fput($this->connection, $remoteFile, $handle, $mode, $startPosision);
         
         if ($result === false) {
