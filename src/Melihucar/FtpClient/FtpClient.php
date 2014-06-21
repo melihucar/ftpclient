@@ -219,11 +219,12 @@ class FtpClient
     public function listDirectory($directory)
     {
         $result = @ftp_nlist($this->connection, $directory);
-        asort($result);
         
         if ($result === false) {
             throw new Exception('Unable to list directory');
         }
+        
+        asort($result);
 
         return $result;
     }
