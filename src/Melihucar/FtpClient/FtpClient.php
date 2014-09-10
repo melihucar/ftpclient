@@ -104,6 +104,11 @@ class FtpClient
         if ($result === false) {
             throw new Exception('Login incorrect');
         } else {
+            // set passive mode
+            if (!is_null($this->passive)) {
+                $this->passive($this->passive);
+            }
+
             return $this;
         }
     }
