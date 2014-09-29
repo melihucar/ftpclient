@@ -28,6 +28,16 @@ $ftp->passive();
 $ftp->passive(false);
 ```
 
+
+### Using Binary Mode :###
+
+```php
+// This uses binary mode, required for downloading binaries like zip
+$ftp->binary(true);
+
+// standard is false
+```
+
 ###Changing Directory :###
 
 ```php
