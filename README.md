@@ -4,6 +4,8 @@ FTP Client for PHP
 [![Total Downloads](https://poser.pugx.org/melihucar/ftpclient/downloads.png)](https://packagist.org/packages/melihucar/ftpclient)
 [![Latest Stable Version](https://poser.pugx.org/melihucar/ftpclient/v/stable.png)](https://packagist.org/packages/melihucar/ftpclient)
 
+[![Support via Gittip](https://rawgithub.com/twolfson/gittip-badge/0.1.0/dist/gittip.png)](https://www.gittip.com/melihucar)
+
 *By Melih Ucar.
 (http://www.melihucar.net/)*
 
