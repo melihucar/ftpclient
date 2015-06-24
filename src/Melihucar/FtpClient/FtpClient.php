@@ -420,7 +420,7 @@ class FtpClient
      * 
      * @return FTPClient
      */
-    public function fget(resource $handle, $remoteFile, $resumePosision = 0)
+    public function fget($handle, $remoteFile, $resumePosision = 0)
     {
         $mode = $this->getMode();
         $result = @ftp_fget($this->connection, $handle, $remoteFile, $mode, $resumePosision);
@@ -442,7 +442,7 @@ class FtpClient
      * 
      * @return FTPClient
      */
-    public function fput($remoteFile, resource $handle, $startPosision = 0)
+    public function fput($remoteFile, $handle, $startPosision = 0)
     {
         $mode = $this->getMode();
         $result = @ftp_fput($this->connection, $remoteFile, $handle, $mode, $startPosision);
